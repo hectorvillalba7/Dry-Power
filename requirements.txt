@@ -1,6 +1,0 @@
-streamlit
-streamlit-option-menu
-pandas
-yfinance
-plotly
-streamlit-echarts
