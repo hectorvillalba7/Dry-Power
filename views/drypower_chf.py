@@ -5,7 +5,7 @@ import pandas as pd
 
 def run():
     # Read Data and filter the columns desired
-    chf_info = pd.read_excel(r'C:\Users\hector\Documents\trading\cftc data\years\dea_fut_chf.xlsx')
+    chf_info = pd.read_excel('assets/dea_fut_chf.xlsx')
     chf_info['NonComm_Positions_Short_All'] = chf_info['NonComm_Positions_Short_All'].map(lambda x: x*(-1))
     df_filtered = chf_info[[
         "Traders_NonComm_Long_All", 
