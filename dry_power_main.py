@@ -23,7 +23,7 @@ pages = {
 }
 
 with st.sidebar:
-    st.title("Navegación")
+    st.title("Currency")
     page_selection = option_menu(
         menu_title=None,
         options=list(pages.keys()),
