@@ -25,26 +25,25 @@ pages = {
 with st.sidebar:
     st.title("Navegación")
     page_selection = option_menu(
-        menu_title=None,  # No se muestra un título adicional
+        menu_title=None,
         options=list(pages.keys()),
         icons=["currency-dollar","currency-euro","currency-pound","arrow","arrow-forward-ios",
-               "arrow-forward-ios", "currency-yen","currency-franc"],  # iconos paginas
-        menu_icon="cast",  # Ícono del menú
-        default_index=0,  # Índice por defecto
+               "arrow-forward-ios", "currency-yen","currency-franc"],  # icons
+        menu_icon="cast", 
+        default_index=0,  
         styles={
-            "container": {"padding": "5px", "background-color": "#f0f2f6"},  # Fondo del menú
-            "icon": {"color": "black", "font-size": "18px"},  # Color y tamaño de los íconos
+            "container": {"padding": "5px", "background-color": "#f0f2f6"}, 
+            "icon": {"color": "black", "font-size": "18px"},
             "nav-link": {
                 "font-size": "16px",
                 "text-align": "left",
                 "margin": "0px",
                 "color": "black",
-            },  # Estilo de los enlaces
-            "nav-link-selected": {"background-color": "#007bff", "color": "white"},  # Página seleccionada
+            },  
+            "nav-link-selected": {"background-color": "#007bff", "color": "white"}, #Page selector
         },
     )
 
-#st.logo("assets/logo.png")
 # --- RUN SELECTED PAGE ---
 pages[page_selection]()
 

@@ -4,7 +4,7 @@ import plotly.graph_objects as go
 import pandas as pd
 
 def run():
-    # Read Data
+    # Read Data and filter the columns desired
     cad_info = pd.read_excel(r'C:\Users\hector\Documents\trading\cftc data\years\dea_fut_cad.xlsx')
     cad_info['NonComm_Positions_Short_All'] = cad_info['NonComm_Positions_Short_All'].map(lambda x: x*(-1))
     df_filtered = cad_info[[
@@ -13,13 +13,13 @@ def run():
         "Traders_NonComm_Short_All", 
         "NonComm_Positions_Short_All"]]
 
-    # Crear datos para el gráfico
+    # create data for plotting
     x_long = df_filtered['Traders_NonComm_Long_All']
     y_long = df_filtered['NonComm_Positions_Long_All']
     x_short = df_filtered['Traders_NonComm_Short_All']
     y_short = df_filtered['NonComm_Positions_Short_All']
 
-    # Crear el primer punto con color rojo
+    # Red point
     first_point_long = go.Scatter(
         x=[x_long.iloc[0]],
         y=[y_long.iloc[0]],
@@ -36,7 +36,7 @@ def run():
         name='Last Short Position'
     )
 
-    # Crear gráficos de dispersión para los demás puntos
+    # create scatter
     scatter_long = go.Scatter(
         x=x_long,
         y=y_long,
@@ -53,10 +53,10 @@ def run():
         name='Short Positions'
     )
 
-    # Combinar todos los datos en una figura
+    # Merge all in one figure
     fig = go.Figure(data=[scatter_long, scatter_short,first_point_long,first_point_short])
 
-    # Personalizar el diseño
+
     fig.update_layout(
         title="Dry Power Indicator (Canadian Dollar)",
         xaxis=dict(title="Number of Non-Commercial Traders", zeroline=True, zerolinecolor="black"),
@@ -77,7 +77,7 @@ def run():
         """
     )
 
-    # Mostrar el gráfico en Streamlit
+    # deploy in Streamlit
     st.plotly_chart(fig, use_container_width=True)
 
     st.subheader("Dry Powder (DP) Analysis")
